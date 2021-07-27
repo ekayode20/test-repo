@@ -1,0 +1,36 @@
+name: AWS-BeanStalk-Pipeline
+
+env:
+  APP_S3_BUCKET_NAME: "elasticbeanstalk-us-east-2-458957599743"
+  APP_NAME : "Notediaryday1" # YOUR BENSTALK APP NAME
+  ENV_NAME: "Notediaryday1-env" # YOUR BENSTALK APP ENV NAME
+  DEPLOY_PKG_NAME: "test-repo_${{ github.sha }}.zip"
+  AWS_REGION_NAME: "us-east-2"
+
+on:
+  push:
+    branches: 
+      - master
+
+
+jobs:
+  ci_part:
+    runs-on: [ubuntu-latest]
+    
+    steps:
+     - name: Clone this repositary
+       uses: actions/checkout@v1
+    
+     - name: Make zip pkg
+       run: zip -r ${{ env.DEPLOY_PKG_NAME }} ./ -x *.git*
+       
+     - name: Config Access to AWS
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
