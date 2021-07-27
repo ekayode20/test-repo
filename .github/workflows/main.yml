@@ -2,8 +2,8 @@ name: AWS-BeanStalk-Pipeline
 
 env:
   APP_S3_BUCKET_NAME: "elasticbeanstalk-us-east-2-458957599743"
-  APP_NAME : "Notediaryday1" # YOUR BENSTALK APP NAME
-  ENV_NAME: "Notediaryday1-env" # YOUR BENSTALK APP ENV NAME
+  APP_NAME : "adenote" # YOUR BENSTALK APP NAME
+  ENV_NAME: "Adenote-env" # YOUR BENSTALK APP ENV NAME
   DEPLOY_PKG_NAME: "test-repo_${{ github.sha }}.zip"
   AWS_REGION_NAME: "us-east-2"
 
